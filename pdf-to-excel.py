@@ -4,7 +4,7 @@ import camelot  # For extracting tables
 import pandas as pd
 
 def extract_tables_to_excel(pdf_path, output_excel):
-    table_pattern = re.compile(r"^Table \d+[a-zA-Z]?$", re.IGNORECASE)
+    table_pattern = re.compile(r"^TABLE \d+[a-zA-Z]?$")
 
     doc = fitz.open(pdf_path)
 
@@ -37,9 +37,8 @@ def extract_tables_to_excel(pdf_path, output_excel):
                     else:
                         print("No structured tables found on this page.")
 
-                    break  # Stop after identifying the relevant header
-
+                    break
 # Example usage
-pdf_path = "v21pa00-e.pdf"  # Replace with your PDF file path
-output_excel = "tables_output2.xlsx"
+pdf_path = "v21pa00-e.pdf"
+output_excel = "tables_output.xlsx"
 extract_tables_to_excel(pdf_path, output_excel)
